@@ -3,7 +3,6 @@
 
 import string
 
-
 def show_txt(external_ground):
     """Shows the current state of the playing field."""
     import copy
