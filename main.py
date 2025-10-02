@@ -1,7 +1,7 @@
 # Tic-Tac-Toe Game
 # Created by Aleksej Patkevič <opat74@gmail.com>
 
-from functions import *
+from tictactoe import show_txt, valid_coord, read_turn, make_turn,make_turn, detect_win_row, detect_win_column, detect_win_diagonals
 
 
 if __name__ == '__main__':
@@ -13,19 +13,17 @@ if __name__ == '__main__':
 
     winner = 'No winner'
     player = 'X'
-    turn = 1
+
     print()
-    while turn <= 9:
+    for turn in range(1, 10):
         show_txt(my_field)
-        print("Turn = ", turn, "Player =", player)
+        print(f"Turn = {turn}, Player = {player}")
         turn_coord = read_turn(player, my_field)
         print()
         if turn_coord == 'QUIT_GAME':
             break
         my_field = make_turn(player, turn_coord, my_field)
-        print(my_field)
 
-        #if detect_win_row(my_field) == True or detect_win_column(my_field) == True or detect_win_diagonals(my_field) == True:
         if any([detect_win_row(my_field), detect_win_column(my_field), detect_win_diagonals(my_field)]):
             winner = player
             break
@@ -34,7 +32,6 @@ if __name__ == '__main__':
             player = 'O'
         else:
             player = 'X'
-        turn+=1
 
     if turn_coord == 'QUIT_GAME':
         print('Game cancelled!')
